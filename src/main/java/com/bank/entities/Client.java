@@ -1,5 +1,7 @@
 package com.bank.entities;
 
+
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -7,11 +9,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
+@Table(name= "clientes")
 public class Client implements Serializable {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,8 +28,9 @@ public class Client implements Serializable {
 	private String name;
 	private String email;
 	private String phone;
-
-	public Client() {}
+	public Client() {
+		super();
+	}
 	public Client(Long id, String user, String password, String name, String email, String phone) {
 		super();
 		this.id = id;
@@ -67,9 +76,6 @@ public class Client implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -90,5 +96,7 @@ public class Client implements Serializable {
 		return "Client [id=" + id + ", user=" + user + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", phone=" + phone + "]";
 	}
-		
+	
+	
+
 }
